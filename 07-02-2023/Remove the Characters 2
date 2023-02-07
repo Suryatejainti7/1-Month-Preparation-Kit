@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner inp = new Scanner(System.in);
+        String s1= inp.next();
+        String s2 = inp.next();
+        Map<Character,Integer> map = new HashMap<>();
+        for(char ch:s2.toCharArray())
+        {
+            if(map.containsKey(ch))
+                map.put(ch,map.get(ch)+1);
+            else
+                map.put(ch,1);
+        }
+        for(char c:s1.toCharArray())
+        {
+            if(!map.containsKey(c))
+                   System.out.print(c);
+           else
+                map.put(c,map.get(c)-1);
+            if(map.containsKey(c) && map.get(c)==0)
+                map.remove(c);
+        }
+    }
+}
