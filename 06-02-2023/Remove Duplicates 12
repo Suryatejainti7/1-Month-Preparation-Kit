@@ -1,0 +1,20 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in =new Scanner(System.in);
+       String a=in.nextLine();
+       LinkedHashSet<Character> hs =new LinkedHashSet<Character>();
+        for(int i=0;i<a.length();i++){
+           
+                hs.add(a.charAt(i));
+        }
+        Iterator value = hs.iterator();
+        while (value.hasNext()) {
+            System.out.print(value.next());
+       
+    }
+}
+}
