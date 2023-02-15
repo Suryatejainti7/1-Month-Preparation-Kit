@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-- != 0){
+            int m = sc.nextInt();
+            int n = sc.nextInt();
+            int[] np = new int[n];
+            Map<Integer, Integer> map = new HashMap<>();
+            for(int i = 0; i < n ; i++){
+                np[i] = sc.nextInt();
+                if(map.containsKey(np[i]) == false)
+                    map.put(np[i], i+1);
+            }
+            
+            Arrays.sort(np);
+            
+            int s = 0;
+            int e = n - 1;
+            while(s < e){
+                if(np[s] + np[e] > m){
+                    e--;
+                } else if (np[s] + np[e] < m){
+                    s++;
+                } else {
+                    int i1 = map.get(np[s]);
+                    int i2 = map.get(np[e]);
+                    if(np[s] == np[e])
+                        i2++;
+                    
+                    System.out.printf("%d %d%n", Math.min(i1, i2), Math.max(i1, i2));
+                    e--;
+                    s++;
+                }
+            }
+        }
+    }
+}
